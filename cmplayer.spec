@@ -7,7 +7,7 @@
 
 %define name cmplayer
 %define version 0.5.4
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name: 		%{name}
 Summary:	A multimedia player
