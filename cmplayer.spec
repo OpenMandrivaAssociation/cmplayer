@@ -5,20 +5,16 @@
 # this spec file assume the source license
 ######################################################
 
-%define name cmplayer
-%define version 0.5.4
-%define release %mkrel 4
-
-Name: 		%{name}
 Summary:	A multimedia player
-License:	GPLv2
+Name: 		cmplayer
+Version:	0.5.4
+Release:	5
 Group:		Video
-Version:	%{version}
-Release:	%{release}
+License:	GPLv2
 URL:		http://code.google.com/p/cmplayer
-Source:		http://cmplayer.googlecode.com/files/%{name}-%{version}-src.tar.gz
+Source0:	http://cmplayer.googlecode.com/files/%{name}-%{version}-src.tar.gz
 Patch0:		cmplayer-0.5.4-ru.patch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+
 BuildRequires:	qt4-devel >= 4.6
 BuildRequires:	vlc-devel >= 1.1
 Requires:	vlc >= 1.1
@@ -44,17 +40,20 @@ rm -rf debian
 rm -rf rpm
 
 %build
-%make QMAKE=qmake PREFIX=%{_prefix} CMPLAYER_ACTION_PATH=%{_datadir}/kde4/apps/solid/actions CMPLAYER_VLC_PLUGINS_PATH=%{_libdir}/%{name}/vlc-plugins
+%make QMAKE=qmake \
+	PREFIX=%{_prefix} \
+	CMPLAYER_ACTION_PATH=%{_datadir}/kde4/apps/solid/actions \
+	CMPLAYER_VLC_PLUGINS_PATH=%{_libdir}/%{name}/vlc-plugins
 
 %install
-rm -rf %{buildroot}
-make QMAKE=qmake PREFIX=%{_prefix} DEST_DIR=%{buildroot} CMPLAYER_ACTION_PATH=%{_datadir}/kde4/apps/solid/actions CMPLAYER_VLC_PLUGINS_PATH=%{_libdir}/%{name}/vlc-plugins install
-
-%clean
-rm -rf %{buildroot}
+make QMAKE=qmake \
+	PREFIX=%{_prefix} \
+	DEST_DIR=%{buildroot} \
+	CMPLAYER_ACTION_PATH=%{_datadir}/kde4/apps/solid/actions \
+	CMPLAYER_VLC_PLUGINS_PATH=%{_libdir}/%{name}/vlc-plugins \
+	install
 
 %files
-%defattr (-,root,root)
 %doc copyright.txt gpl.txt icon-authors.txt icon-copying.txt install.txt changes.txt
 %{_bindir}/%{name}
 %{_libdir}/%{name}/vlc-plugins/libcmplayer-afilter_plugin.so
@@ -62,5 +61,5 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/vlc-plugins/libcmplayer-vout_plugin.so
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/apps/solid/actions/%{name}-opendvd.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
 
