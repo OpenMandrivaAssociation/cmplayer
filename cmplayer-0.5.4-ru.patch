@@ -1,0 +1,4319 @@
+diff -urN cmplayer-0.5.4/Makefile cmplayer-0.5.4-patched/Makefile
+--- cmplayer-0.5.4/Makefile	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/Makefile	2011-11-24 02:45:44.000000000 +0400
+@@ -71,6 +71,7 @@
+ translations:
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ko.ts -qm cmplayer_ko.qm
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_en.ts -qm cmplayer_en.qm
++	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ru.ts -qm cmplayer_ru.qm
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ja.ts -qm cmplayer_ja.qm
+ 
+ libchardet:
+diff -urN cmplayer-0.5.4/Makefile.linux cmplayer-0.5.4-patched/Makefile.linux
+--- cmplayer-0.5.4/Makefile.linux	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/Makefile.linux	2011-11-24 02:44:52.000000000 +0400
+@@ -38,6 +38,7 @@
+ translations:
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ko.ts -qm cmplayer_ko
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_en.ts -qm cmplayer_en
++	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ru.ts -qm cmplayer_ru
+ 	cd src/cmplayer/translations && $(LRELEASE) cmplayer_ja.ts -qm cmplayer_ja
+ 
+ clean:
+diff -urN cmplayer-0.5.4/src/cmplayer/cmplayer.pro cmplayer-0.5.4-patched/src/cmplayer/cmplayer.pro
+--- cmplayer-0.5.4/src/cmplayer/cmplayer.pro	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/src/cmplayer/cmplayer.pro	2011-11-24 02:42:51.000000000 +0400
+@@ -184,6 +184,7 @@
+     app.cpp
+ TRANSLATIONS += translations/cmplayer_ko.ts \
+     translations/cmplayer_en.ts \
++    translations/cmplayer_ru.ts \
+     translations/cmplayer_ja.ts
+ FORMS += \
+     ui/aboutdialog.ui \
+diff -urN cmplayer-0.5.4/src/cmplayer/rsclist.qrc cmplayer-0.5.4-patched/src/cmplayer/rsclist.qrc
+--- cmplayer-0.5.4/src/cmplayer/rsclist.qrc	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/src/cmplayer/rsclist.qrc	2011-11-24 02:43:43.000000000 +0400
+@@ -24,6 +24,7 @@
+         <file>img/speaker-large.png</file>
+         <file>mpl.html</file>
+         <file>translations/cmplayer_en.qm</file>
++        <file>translations/cmplayer_ru.qm</file>
+         <file>translations/cmplayer_ja.qm</file>
+         <file>translations/cmplayer_ko.qm</file>
+     </qresource>
+diff -urN cmplayer-0.5.4/src/cmplayer/translations/cmplayer_en.ts cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_en.ts
+--- cmplayer-0.5.4/src/cmplayer/translations/cmplayer_en.ts	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_en.ts	2011-11-24 07:05:19.000000000 +0400
+@@ -92,42 +92,42 @@
+ <context>
+     <name>ControlWidget</name>
+     <message>
+-        <location filename="../controlwidget.cpp" line="266"/>
++        <location filename="../controlwidget.cpp" line="313"/>
+         <source>Playing</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="270"/>
++        <location filename="../controlwidget.cpp" line="315"/>
+         <source>Stopped</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="272"/>
++        <location filename="../controlwidget.cpp" line="317"/>
+         <source>Finished</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="274"/>
++        <location filename="../controlwidget.cpp" line="318"/>
+         <source>Paused</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="306"/>
++        <location filename="../controlwidget.cpp" line="325"/>
+         <source>Backward</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="307"/>
++        <location filename="../controlwidget.cpp" line="326"/>
+         <source>Forward</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="308"/>
++        <location filename="../controlwidget.cpp" line="327"/>
+         <source>Next</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="309"/>
++        <location filename="../controlwidget.cpp" line="328"/>
+         <source>Previous</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -1412,528 +1412,528 @@
+ <context>
+     <name>RootMenu</name>
+     <message>
+-        <location filename="../rootmenu.cpp" line="310"/>
+-        <location filename="../rootmenu.cpp" line="359"/>
++        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="360"/>
+         <source>Open</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="312"/>
+         <source>Open File</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="312"/>
++        <location filename="../rootmenu.cpp" line="313"/>
+         <source>Load URL</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="313"/>
++        <location filename="../rootmenu.cpp" line="314"/>
+         <source>Open DVD</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="316"/>
++        <location filename="../rootmenu.cpp" line="317"/>
+         <source>Recent Open</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="317"/>
+-        <location filename="../rootmenu.cpp" line="360"/>
++        <location filename="../rootmenu.cpp" line="318"/>
++        <location filename="../rootmenu.cpp" line="361"/>
+         <source>Clear</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="320"/>
+         <location filename="../rootmenu.cpp" line="321"/>
++        <location filename="../rootmenu.cpp" line="322"/>
+         <source>Play</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="322"/>
++        <location filename="../rootmenu.cpp" line="323"/>
+         <source>Stop</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="323"/>
++        <location filename="../rootmenu.cpp" line="324"/>
+         <source>Play Previous</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="324"/>
++        <location filename="../rootmenu.cpp" line="325"/>
+         <source>Play Next</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="327"/>
++        <location filename="../rootmenu.cpp" line="328"/>
+         <source>Playback Speed</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="328"/>
+-        <location filename="../rootmenu.cpp" line="408"/>
+-        <location filename="../rootmenu.cpp" line="428"/>
++        <location filename="../rootmenu.cpp" line="329"/>
++        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="429"/>
+         <source>Reset</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="332"/>
++        <location filename="../rootmenu.cpp" line="333"/>
+         <source>A-B Repeat</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="333"/>
++        <location filename="../rootmenu.cpp" line="334"/>
+         <source>Set Range to Current Time</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="334"/>
++        <location filename="../rootmenu.cpp" line="335"/>
+         <source>Repeat Current Subtitle</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="335"/>
++        <location filename="../rootmenu.cpp" line="336"/>
+         <source>Quit</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="338"/>
++        <location filename="../rootmenu.cpp" line="339"/>
+         <source>Seek</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="339"/>
++        <location filename="../rootmenu.cpp" line="340"/>
+         <source>Forward %1sec</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="343"/>
++        <location filename="../rootmenu.cpp" line="344"/>
+         <source>Backward %1sec</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="348"/>
++        <location filename="../rootmenu.cpp" line="349"/>
+         <source>To Previous Subtitle</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="349"/>
++        <location filename="../rootmenu.cpp" line="350"/>
+         <source>To Beginning of Current Subtitle</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="350"/>
++        <location filename="../rootmenu.cpp" line="351"/>
+         <source>To Next Subtitle</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="352"/>
++        <location filename="../rootmenu.cpp" line="353"/>
+         <source>Title</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="353"/>
++        <location filename="../rootmenu.cpp" line="354"/>
+         <source>Chapter</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="356"/>
++        <location filename="../rootmenu.cpp" line="357"/>
+         <source>Subtitle</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="358"/>
++        <location filename="../rootmenu.cpp" line="359"/>
+         <source>Subtitle File</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="361"/>
++        <location filename="../rootmenu.cpp" line="362"/>
+         <source>Hide</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="362"/>
++        <location filename="../rootmenu.cpp" line="363"/>
+         <source>Subtitle Track</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="364"/>
++        <location filename="../rootmenu.cpp" line="365"/>
+         <source>Display on Letterbox</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="365"/>
++        <location filename="../rootmenu.cpp" line="366"/>
+         <source>Display in Video</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="366"/>
++        <location filename="../rootmenu.cpp" line="367"/>
+         <source>Top Alignment</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="367"/>
++        <location filename="../rootmenu.cpp" line="368"/>
+         <source>Bottom Alignment</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="369"/>
++        <location filename="../rootmenu.cpp" line="370"/>
+         <source>Up %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="370"/>
++        <location filename="../rootmenu.cpp" line="371"/>
+         <source>Down %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="371"/>
++        <location filename="../rootmenu.cpp" line="372"/>
+         <source>Reset Sync</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="372"/>
++        <location filename="../rootmenu.cpp" line="373"/>
+         <source>Sync %1sec</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="375"/>
++        <location filename="../rootmenu.cpp" line="376"/>
+         <source>Video</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="376"/>
++        <location filename="../rootmenu.cpp" line="377"/>
+         <source>Video Track</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="379"/>
+-        <source>Aspect Ratio</source>
+-        <translation type="unfinished"></translation>
+-    </message>
+-    <message>
+         <location filename="../rootmenu.cpp" line="380"/>
+-        <location filename="../rootmenu.cpp" line="437"/>
+-        <source>Auto</source>
++        <source>Aspect Ratio</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+         <location filename="../rootmenu.cpp" line="381"/>
+-        <location filename="../rootmenu.cpp" line="390"/>
+-        <source>Same as Window</source>
++        <location filename="../rootmenu.cpp" line="438"/>
++        <source>Auto</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+         <location filename="../rootmenu.cpp" line="382"/>
+         <location filename="../rootmenu.cpp" line="391"/>
+-        <source>4:3 (TV)</source>
++        <source>Same as Window</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+         <location filename="../rootmenu.cpp" line="383"/>
+         <location filename="../rootmenu.cpp" line="392"/>
+-        <source>16:9 (HDTV)</source>
++        <source>4:3 (TV)</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+         <location filename="../rootmenu.cpp" line="384"/>
+         <location filename="../rootmenu.cpp" line="393"/>
+-        <source>1.85:1 (Wide Vision)</source>
++        <source>16:9 (HDTV)</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+         <location filename="../rootmenu.cpp" line="385"/>
+         <location filename="../rootmenu.cpp" line="394"/>
++        <source>1.85:1 (Wide Vision)</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="386"/>
++        <location filename="../rootmenu.cpp" line="395"/>
+         <source>2.35:1 (CinemaScope)</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="388"/>
++        <location filename="../rootmenu.cpp" line="389"/>
+         <source>Crop</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="389"/>
++        <location filename="../rootmenu.cpp" line="390"/>
+         <source>Off</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="397"/>
++        <location filename="../rootmenu.cpp" line="398"/>
+         <source>Screen Alignment</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="399"/>
++        <location filename="../rootmenu.cpp" line="400"/>
+         <source>Top</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="400"/>
++        <location filename="../rootmenu.cpp" line="401"/>
+         <source>Vertical Center</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="401"/>
++        <location filename="../rootmenu.cpp" line="402"/>
+         <source>Bottom</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="402"/>
++        <location filename="../rootmenu.cpp" line="403"/>
+         <source>Left</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="403"/>
++        <location filename="../rootmenu.cpp" line="404"/>
+         <source>Horizontal Center</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="404"/>
++        <location filename="../rootmenu.cpp" line="405"/>
+         <source>Right</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="407"/>
++        <location filename="../rootmenu.cpp" line="408"/>
+         <source>Screen Position</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="410"/>
+         <source>Up</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="410"/>
++        <location filename="../rootmenu.cpp" line="411"/>
+         <source>Down</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="411"/>
++        <location filename="../rootmenu.cpp" line="412"/>
+         <source>To Left</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="412"/>
++        <location filename="../rootmenu.cpp" line="413"/>
+         <source>To Right</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="415"/>
++        <location filename="../rootmenu.cpp" line="416"/>
+         <source>Filter</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="416"/>
++        <location filename="../rootmenu.cpp" line="417"/>
+         <source>Flip Vertically</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="417"/>
++        <location filename="../rootmenu.cpp" line="418"/>
+         <source>Flip Horizontally</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="418"/>
++        <location filename="../rootmenu.cpp" line="419"/>
+         <source>Blur</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="419"/>
++        <location filename="../rootmenu.cpp" line="420"/>
+         <source>Sharpen</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="420"/>
++        <location filename="../rootmenu.cpp" line="421"/>
+         <source>Grayscale</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="421"/>
++        <location filename="../rootmenu.cpp" line="422"/>
+         <source>Invert Color</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="422"/>
++        <location filename="../rootmenu.cpp" line="423"/>
+         <source>Adjust Constrast</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="423"/>
++        <location filename="../rootmenu.cpp" line="424"/>
+         <source>Auto Contrast</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="424"/>
++        <location filename="../rootmenu.cpp" line="425"/>
+         <source>Ignore All Filters</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="427"/>
++        <location filename="../rootmenu.cpp" line="428"/>
+         <source>Color</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="429"/>
++        <location filename="../rootmenu.cpp" line="430"/>
+         <source>Brightness %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="430"/>
++        <location filename="../rootmenu.cpp" line="431"/>
+         <source>Saturation %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="431"/>
++        <location filename="../rootmenu.cpp" line="432"/>
+         <source>Contrast %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="432"/>
++        <location filename="../rootmenu.cpp" line="433"/>
+         <source>Hue %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="433"/>
++        <location filename="../rootmenu.cpp" line="434"/>
+         <source>Take Snapshot</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="436"/>
++        <location filename="../rootmenu.cpp" line="437"/>
+         <source>Overlay</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="438"/>
++        <location filename="../rootmenu.cpp" line="439"/>
+         <source>Framebuffer Object</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="439"/>
++        <location filename="../rootmenu.cpp" line="440"/>
+         <source>Pixmap</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="442"/>
++        <location filename="../rootmenu.cpp" line="443"/>
+         <source>Audio</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="443"/>
++        <location filename="../rootmenu.cpp" line="444"/>
+         <source>Audio Track</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="444"/>
++        <location filename="../rootmenu.cpp" line="445"/>
+         <source>Mute</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="445"/>
++        <location filename="../rootmenu.cpp" line="446"/>
+         <source>Normalize Volume</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="447"/>
++        <location filename="../rootmenu.cpp" line="448"/>
+         <source>Volume %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="449"/>
++        <location filename="../rootmenu.cpp" line="450"/>
+         <source>Amp %1%</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="452"/>
++        <location filename="../rootmenu.cpp" line="453"/>
+         <source>Tools</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="453"/>
++        <location filename="../rootmenu.cpp" line="454"/>
+         <source>Playlist</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="454"/>
++        <location filename="../rootmenu.cpp" line="455"/>
+         <source>Favorites</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="455"/>
++        <location filename="../rootmenu.cpp" line="456"/>
+         <source>Play History</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="456"/>
++        <location filename="../rootmenu.cpp" line="457"/>
+         <source>Subtitle View</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="457"/>
++        <location filename="../rootmenu.cpp" line="458"/>
+         <source>Preferences</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="458"/>
++        <location filename="../rootmenu.cpp" line="459"/>
+         <source>Play Information</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="461"/>
++        <location filename="../rootmenu.cpp" line="462"/>
+         <source>Window</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="462"/>
++        <location filename="../rootmenu.cpp" line="463"/>
+         <source>Always Stay on Top</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="463"/>
++        <location filename="../rootmenu.cpp" line="464"/>
+         <source>Stay on Top Playing</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="464"/>
++        <location filename="../rootmenu.cpp" line="465"/>
+         <source>Don&apos;t Stay on Top</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="465"/>
++        <location filename="../rootmenu.cpp" line="466"/>
+         <source>Proper Size</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="466"/>
++        <location filename="../rootmenu.cpp" line="467"/>
+         <source>Fullscreen</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="467"/>
++        <location filename="../rootmenu.cpp" line="468"/>
+         <source>Minimize</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="468"/>
++        <location filename="../rootmenu.cpp" line="469"/>
+         <source>Maximize</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="469"/>
++        <location filename="../rootmenu.cpp" line="470"/>
+         <source>Close</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="472"/>
++        <location filename="../rootmenu.cpp" line="473"/>
+         <source>Help</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="473"/>
++        <location filename="../rootmenu.cpp" line="474"/>
+         <source>About %1</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="474"/>
++        <location filename="../rootmenu.cpp" line="475"/>
+         <source>Exit</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff -urN cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ja.ts cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ja.ts
+--- cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ja.ts	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ja.ts	2011-11-24 07:05:19.000000000 +0400
+@@ -312,22 +312,22 @@
+ <context>
+     <name>ControlWidget</name>
+     <message>
+-        <location filename="../controlwidget.cpp" line="270"/>
++        <location filename="../controlwidget.cpp" line="315"/>
+         <source>Stopped</source>
+         <translation>停止</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="272"/>
++        <location filename="../controlwidget.cpp" line="317"/>
+         <source>Finished</source>
+         <translation>終了</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="266"/>
++        <location filename="../controlwidget.cpp" line="313"/>
+         <source>Playing</source>
+         <translation>再生中</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="274"/>
++        <location filename="../controlwidget.cpp" line="318"/>
+         <source>Paused</source>
+         <translation>一時停止</translation>
+     </message>
+@@ -360,12 +360,12 @@
+         <translation type="obsolete">プレイリスト表示切り替え</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="306"/>
++        <location filename="../controlwidget.cpp" line="325"/>
+         <source>Backward</source>
+         <translation>戻す</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="307"/>
++        <location filename="../controlwidget.cpp" line="326"/>
+         <source>Forward</source>
+         <translation>進む</translation>
+     </message>
+@@ -374,7 +374,7 @@
+         <translation type="obsolete">停止</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="308"/>
++        <location filename="../controlwidget.cpp" line="327"/>
+         <source>Next</source>
+         <translation>次へ</translation>
+     </message>
+@@ -383,7 +383,7 @@
+         <translation type="obsolete">パネルのレイアウト切り替え</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="309"/>
++        <location filename="../controlwidget.cpp" line="328"/>
+         <source>Previous</source>
+         <translation>前へ</translation>
+     </message>
+@@ -3884,528 +3884,528 @@
+ <context>
+     <name>RootMenu</name>
+     <message>
+-        <location filename="../rootmenu.cpp" line="310"/>
+-        <location filename="../rootmenu.cpp" line="359"/>
++        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="360"/>
+         <source>Open</source>
+         <translation>開く</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="312"/>
+         <source>Open File</source>
+         <translation>ファイルを開く</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="312"/>
++        <location filename="../rootmenu.cpp" line="313"/>
+         <source>Load URL</source>
+         <translation>URLを開く</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="313"/>
++        <location filename="../rootmenu.cpp" line="314"/>
+         <source>Open DVD</source>
+         <translation>DVDを開く</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="316"/>
++        <location filename="../rootmenu.cpp" line="317"/>
+         <source>Recent Open</source>
+         <translation>最近開いたもの</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="317"/>
+-        <location filename="../rootmenu.cpp" line="360"/>
++        <location filename="../rootmenu.cpp" line="318"/>
++        <location filename="../rootmenu.cpp" line="361"/>
+         <source>Clear</source>
+         <translation>クリア</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="320"/>
+         <location filename="../rootmenu.cpp" line="321"/>
++        <location filename="../rootmenu.cpp" line="322"/>
+         <source>Play</source>
+         <translation>再生</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="322"/>
++        <location filename="../rootmenu.cpp" line="323"/>
+         <source>Stop</source>
+         <translation>停止</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="323"/>
++        <location filename="../rootmenu.cpp" line="324"/>
+         <source>Play Previous</source>
+         <translation>以前の項目を再生</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="324"/>
++        <location filename="../rootmenu.cpp" line="325"/>
+         <source>Play Next</source>
+         <translation>次の項目を再生</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="327"/>
++        <location filename="../rootmenu.cpp" line="328"/>
+         <source>Playback Speed</source>
+         <translation>再生速度</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="328"/>
+-        <location filename="../rootmenu.cpp" line="408"/>
+-        <location filename="../rootmenu.cpp" line="428"/>
++        <location filename="../rootmenu.cpp" line="329"/>
++        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="429"/>
+         <source>Reset</source>
+         <translation>初期化</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="332"/>
++        <location filename="../rootmenu.cpp" line="333"/>
+         <source>A-B Repeat</source>
+         <translation>区間反復</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="333"/>
++        <location filename="../rootmenu.cpp" line="334"/>
+         <source>Set Range to Current Time</source>
+         <translation>現在の時間で区間を設定</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="334"/>
++        <location filename="../rootmenu.cpp" line="335"/>
+         <source>Repeat Current Subtitle</source>
+         <translation>現在の字幕を反復</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="335"/>
++        <location filename="../rootmenu.cpp" line="336"/>
+         <source>Quit</source>
+         <translation>終了</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="338"/>
++        <location filename="../rootmenu.cpp" line="339"/>
+         <source>Seek</source>
+         <translation>シーク</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="339"/>
++        <location filename="../rootmenu.cpp" line="340"/>
+         <source>Forward %1sec</source>
+         <translation>%1秒進む</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="343"/>
++        <location filename="../rootmenu.cpp" line="344"/>
+         <source>Backward %1sec</source>
+         <translation>%1秒戻る</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="348"/>
++        <location filename="../rootmenu.cpp" line="349"/>
+         <source>To Previous Subtitle</source>
+         <translation>以前の字幕へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="349"/>
++        <location filename="../rootmenu.cpp" line="350"/>
+         <source>To Beginning of Current Subtitle</source>
+         <translation>現在の字幕の始まりへ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="350"/>
++        <location filename="../rootmenu.cpp" line="351"/>
+         <source>To Next Subtitle</source>
+         <translation>次の字幕へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="352"/>
++        <location filename="../rootmenu.cpp" line="353"/>
+         <source>Title</source>
+         <translation>タイトル</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="353"/>
++        <location filename="../rootmenu.cpp" line="354"/>
+         <source>Chapter</source>
+         <translation>チャプター</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="356"/>
++        <location filename="../rootmenu.cpp" line="357"/>
+         <source>Subtitle</source>
+         <translation>字幕</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="358"/>
++        <location filename="../rootmenu.cpp" line="359"/>
+         <source>Subtitle File</source>
+         <translation>字幕ファイル</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="361"/>
++        <location filename="../rootmenu.cpp" line="362"/>
+         <source>Hide</source>
+         <translation>非表示</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="362"/>
++        <location filename="../rootmenu.cpp" line="363"/>
+         <source>Subtitle Track</source>
+         <translation>字幕トラック</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="364"/>
++        <location filename="../rootmenu.cpp" line="365"/>
+         <source>Display on Letterbox</source>
+         <translation>レターボクスに表示</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="365"/>
++        <location filename="../rootmenu.cpp" line="366"/>
+         <source>Display in Video</source>
+         <translation>ビデオ内に表示</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="366"/>
++        <location filename="../rootmenu.cpp" line="367"/>
+         <source>Top Alignment</source>
+         <translation>上端に揃える</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="367"/>
++        <location filename="../rootmenu.cpp" line="368"/>
+         <source>Bottom Alignment</source>
+         <translation>下端に揃える</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="369"/>
++        <location filename="../rootmenu.cpp" line="370"/>
+         <source>Up %1%</source>
+         <translation>%1%上へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="370"/>
++        <location filename="../rootmenu.cpp" line="371"/>
+         <source>Down %1%</source>
+         <translation>%1%下へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="371"/>
++        <location filename="../rootmenu.cpp" line="372"/>
+         <source>Reset Sync</source>
+         <translation>シンクを初期化</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="372"/>
++        <location filename="../rootmenu.cpp" line="373"/>
+         <source>Sync %1sec</source>
+         <translation>シンク %1秒</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="375"/>
++        <location filename="../rootmenu.cpp" line="376"/>
+         <source>Video</source>
+         <translation>ビデオ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="376"/>
++        <location filename="../rootmenu.cpp" line="377"/>
+         <source>Video Track</source>
+         <translation>ビデオトラック</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="379"/>
++        <location filename="../rootmenu.cpp" line="380"/>
+         <source>Aspect Ratio</source>
+         <translation>縦横比</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="380"/>
+-        <location filename="../rootmenu.cpp" line="437"/>
++        <location filename="../rootmenu.cpp" line="381"/>
++        <location filename="../rootmenu.cpp" line="438"/>
+         <source>Auto</source>
+         <translation>自動</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="381"/>
+-        <location filename="../rootmenu.cpp" line="390"/>
++        <location filename="../rootmenu.cpp" line="382"/>
++        <location filename="../rootmenu.cpp" line="391"/>
+         <source>Same as Window</source>
+         <translation>ウィンドーに合わせる</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="382"/>
+-        <location filename="../rootmenu.cpp" line="391"/>
++        <location filename="../rootmenu.cpp" line="383"/>
++        <location filename="../rootmenu.cpp" line="392"/>
+         <source>4:3 (TV)</source>
+         <translation>4:3 (TV)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="383"/>
+-        <location filename="../rootmenu.cpp" line="392"/>
++        <location filename="../rootmenu.cpp" line="384"/>
++        <location filename="../rootmenu.cpp" line="393"/>
+         <source>16:9 (HDTV)</source>
+         <translation>16:9 (HDTV)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="384"/>
+-        <location filename="../rootmenu.cpp" line="393"/>
++        <location filename="../rootmenu.cpp" line="385"/>
++        <location filename="../rootmenu.cpp" line="394"/>
+         <source>1.85:1 (Wide Vision)</source>
+         <translation>1.85:1 (Wide Vision)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="385"/>
+-        <location filename="../rootmenu.cpp" line="394"/>
++        <location filename="../rootmenu.cpp" line="386"/>
++        <location filename="../rootmenu.cpp" line="395"/>
+         <source>2.35:1 (CinemaScope)</source>
+         <translation>2.35:1 (CinemaScope)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="388"/>
++        <location filename="../rootmenu.cpp" line="389"/>
+         <source>Crop</source>
+         <translation>切り抜き</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="389"/>
++        <location filename="../rootmenu.cpp" line="390"/>
+         <source>Off</source>
+         <translation>オフ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="397"/>
++        <location filename="../rootmenu.cpp" line="398"/>
+         <source>Screen Alignment</source>
+         <translation>画面整列</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="399"/>
++        <location filename="../rootmenu.cpp" line="400"/>
+         <source>Top</source>
+         <translation>上端</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="400"/>
++        <location filename="../rootmenu.cpp" line="401"/>
+         <source>Vertical Center</source>
+         <translation>垂直中央</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="401"/>
++        <location filename="../rootmenu.cpp" line="402"/>
+         <source>Bottom</source>
+         <translation>下端</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="402"/>
++        <location filename="../rootmenu.cpp" line="403"/>
+         <source>Left</source>
+         <translation>左端</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="403"/>
++        <location filename="../rootmenu.cpp" line="404"/>
+         <source>Horizontal Center</source>
+         <translation>水平中央</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="404"/>
++        <location filename="../rootmenu.cpp" line="405"/>
+         <source>Right</source>
+         <translation>右端</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="407"/>
++        <location filename="../rootmenu.cpp" line="408"/>
+         <source>Screen Position</source>
+         <translation>画面の位置</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="410"/>
+         <source>Up</source>
+         <translation>上へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="410"/>
++        <location filename="../rootmenu.cpp" line="411"/>
+         <source>Down</source>
+         <translation>下へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="411"/>
++        <location filename="../rootmenu.cpp" line="412"/>
+         <source>To Left</source>
+         <translation>左へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="412"/>
++        <location filename="../rootmenu.cpp" line="413"/>
+         <source>To Right</source>
+         <translation>右へ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="415"/>
++        <location filename="../rootmenu.cpp" line="416"/>
+         <source>Filter</source>
+         <translation>フィルター</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="416"/>
++        <location filename="../rootmenu.cpp" line="417"/>
+         <source>Flip Vertically</source>
+         <translation>上下反転</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="417"/>
++        <location filename="../rootmenu.cpp" line="418"/>
+         <source>Flip Horizontally</source>
+         <translation>左右反転</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="418"/>
++        <location filename="../rootmenu.cpp" line="419"/>
+         <source>Blur</source>
+         <translation>ブラー</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="419"/>
++        <location filename="../rootmenu.cpp" line="420"/>
+         <source>Sharpen</source>
+         <translation>シャープン</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="420"/>
++        <location filename="../rootmenu.cpp" line="421"/>
+         <source>Grayscale</source>
+         <translation>グレースケール</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="421"/>
++        <location filename="../rootmenu.cpp" line="422"/>
+         <source>Invert Color</source>
+         <translation>色反転</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="422"/>
++        <location filename="../rootmenu.cpp" line="423"/>
+         <source>Adjust Constrast</source>
+         <translation>コントラスト調整</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="423"/>
++        <location filename="../rootmenu.cpp" line="424"/>
+         <source>Auto Contrast</source>
+         <translation>自動コントラスト</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="424"/>
++        <location filename="../rootmenu.cpp" line="425"/>
+         <source>Ignore All Filters</source>
+         <translation>全てのフィルターを無視する</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="427"/>
++        <location filename="../rootmenu.cpp" line="428"/>
+         <source>Color</source>
+         <translation>色</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="429"/>
++        <location filename="../rootmenu.cpp" line="430"/>
+         <source>Brightness %1%</source>
+         <translation>明度 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="430"/>
++        <location filename="../rootmenu.cpp" line="431"/>
+         <source>Saturation %1%</source>
+         <translation>彩度 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="431"/>
++        <location filename="../rootmenu.cpp" line="432"/>
+         <source>Contrast %1%</source>
+         <translation>コントラスト %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="432"/>
++        <location filename="../rootmenu.cpp" line="433"/>
+         <source>Hue %1%</source>
+         <translation>色相 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="433"/>
++        <location filename="../rootmenu.cpp" line="434"/>
+         <source>Take Snapshot</source>
+         <translation>スナップショットを撮る</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="436"/>
++        <location filename="../rootmenu.cpp" line="437"/>
+         <source>Overlay</source>
+         <translation>オーバーレー</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="438"/>
++        <location filename="../rootmenu.cpp" line="439"/>
+         <source>Framebuffer Object</source>
+         <translation>フレームファッファーオブジェクト</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="439"/>
++        <location filename="../rootmenu.cpp" line="440"/>
+         <source>Pixmap</source>
+         <translation>ピックスマップ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="442"/>
++        <location filename="../rootmenu.cpp" line="443"/>
+         <source>Audio</source>
+         <translation>オーディオ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="443"/>
++        <location filename="../rootmenu.cpp" line="444"/>
+         <source>Audio Track</source>
+         <translation>オーディオトラック</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="444"/>
++        <location filename="../rootmenu.cpp" line="445"/>
+         <source>Mute</source>
+         <translation>消音</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="445"/>
++        <location filename="../rootmenu.cpp" line="446"/>
+         <source>Normalize Volume</source>
+         <translation>音量平準化</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="447"/>
++        <location filename="../rootmenu.cpp" line="448"/>
+         <source>Volume %1%</source>
+         <translation>音量 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="449"/>
++        <location filename="../rootmenu.cpp" line="450"/>
+         <source>Amp %1%</source>
+         <translation>アンプ %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="452"/>
++        <location filename="../rootmenu.cpp" line="453"/>
+         <source>Tools</source>
+         <translation>ツール</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="453"/>
++        <location filename="../rootmenu.cpp" line="454"/>
+         <source>Playlist</source>
+         <translation>プレイリスト</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="454"/>
++        <location filename="../rootmenu.cpp" line="455"/>
+         <source>Favorites</source>
+         <translation>お気に入り</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="455"/>
++        <location filename="../rootmenu.cpp" line="456"/>
+         <source>Play History</source>
+         <translation>再生履歴</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="456"/>
++        <location filename="../rootmenu.cpp" line="457"/>
+         <source>Subtitle View</source>
+         <translation>字幕ビュー</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="457"/>
++        <location filename="../rootmenu.cpp" line="458"/>
+         <source>Preferences</source>
+         <translation>環境設定</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="458"/>
++        <location filename="../rootmenu.cpp" line="459"/>
+         <source>Play Information</source>
+         <translation>再生情報</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="461"/>
++        <location filename="../rootmenu.cpp" line="462"/>
+         <source>Window</source>
+         <translation>ウィンドー</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="462"/>
++        <location filename="../rootmenu.cpp" line="463"/>
+         <source>Always Stay on Top</source>
+         <translation>常にトップに表示</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="463"/>
++        <location filename="../rootmenu.cpp" line="464"/>
+         <source>Stay on Top Playing</source>
+         <translation>再生中にトップに表示</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="464"/>
++        <location filename="../rootmenu.cpp" line="465"/>
+         <source>Don&apos;t Stay on Top</source>
+         <translation>トップに表示しない</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="465"/>
++        <location filename="../rootmenu.cpp" line="466"/>
+         <source>Proper Size</source>
+         <translation>適当な大きさ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="466"/>
++        <location filename="../rootmenu.cpp" line="467"/>
+         <source>Fullscreen</source>
+         <translation>フルスクリーン</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="467"/>
++        <location filename="../rootmenu.cpp" line="468"/>
+         <source>Minimize</source>
+         <translation>最小化</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="468"/>
++        <location filename="../rootmenu.cpp" line="469"/>
+         <source>Maximize</source>
+         <translation>最大化</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="469"/>
++        <location filename="../rootmenu.cpp" line="470"/>
+         <source>Close</source>
+         <translation>閉じる</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="472"/>
++        <location filename="../rootmenu.cpp" line="473"/>
+         <source>Help</source>
+         <translation>ヘルプ</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="473"/>
++        <location filename="../rootmenu.cpp" line="474"/>
+         <source>About %1</source>
+         <translation>%1 情報</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="474"/>
++        <location filename="../rootmenu.cpp" line="475"/>
+         <source>Exit</source>
+         <translation>終了</translation>
+     </message>
+diff -urN cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ko.ts cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ko.ts
+--- cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ko.ts	2011-11-14 20:24:18.000000000 +0400
++++ cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ko.ts	2011-11-24 07:05:19.000000000 +0400
+@@ -278,22 +278,22 @@
+ <context>
+     <name>ControlWidget</name>
+     <message>
+-        <location filename="../controlwidget.cpp" line="270"/>
++        <location filename="../controlwidget.cpp" line="315"/>
+         <source>Stopped</source>
+         <translation>정지</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="272"/>
++        <location filename="../controlwidget.cpp" line="317"/>
+         <source>Finished</source>
+         <translation>마침</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="266"/>
++        <location filename="../controlwidget.cpp" line="313"/>
+         <source>Playing</source>
+         <translation>재생중</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="274"/>
++        <location filename="../controlwidget.cpp" line="318"/>
+         <source>Paused</source>
+         <translation>일시정지</translation>
+     </message>
+@@ -326,12 +326,12 @@
+         <translation type="obsolete">재생 목록 표시 전환</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="306"/>
++        <location filename="../controlwidget.cpp" line="325"/>
+         <source>Backward</source>
+         <translation>뒤로</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="307"/>
++        <location filename="../controlwidget.cpp" line="326"/>
+         <source>Forward</source>
+         <translation>앞으로</translation>
+     </message>
+@@ -340,7 +340,7 @@
+         <translation type="obsolete">정지</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="308"/>
++        <location filename="../controlwidget.cpp" line="327"/>
+         <source>Next</source>
+         <translation>다음</translation>
+     </message>
+@@ -349,7 +349,7 @@
+         <translation type="obsolete">패널 레이아웃 전환</translation>
+     </message>
+     <message>
+-        <location filename="../controlwidget.cpp" line="309"/>
++        <location filename="../controlwidget.cpp" line="328"/>
+         <source>Previous</source>
+         <translation>이전</translation>
+     </message>
+@@ -4033,528 +4033,528 @@
+ <context>
+     <name>RootMenu</name>
+     <message>
+-        <location filename="../rootmenu.cpp" line="310"/>
+-        <location filename="../rootmenu.cpp" line="359"/>
++        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="360"/>
+         <source>Open</source>
+         <translation>열기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="312"/>
+         <source>Open File</source>
+         <translation>파일 열기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="312"/>
++        <location filename="../rootmenu.cpp" line="313"/>
+         <source>Load URL</source>
+         <translation>URL 불러오기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="313"/>
++        <location filename="../rootmenu.cpp" line="314"/>
+         <source>Open DVD</source>
+         <translation>DVD 열기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="316"/>
++        <location filename="../rootmenu.cpp" line="317"/>
+         <source>Recent Open</source>
+         <translation>최근 연 목록</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="317"/>
+-        <location filename="../rootmenu.cpp" line="360"/>
++        <location filename="../rootmenu.cpp" line="318"/>
++        <location filename="../rootmenu.cpp" line="361"/>
+         <source>Clear</source>
+         <translation>비우기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="320"/>
+         <location filename="../rootmenu.cpp" line="321"/>
++        <location filename="../rootmenu.cpp" line="322"/>
+         <source>Play</source>
+         <translation>재생</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="322"/>
++        <location filename="../rootmenu.cpp" line="323"/>
+         <source>Stop</source>
+         <translation>정지</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="323"/>
++        <location filename="../rootmenu.cpp" line="324"/>
+         <source>Play Previous</source>
+         <translation>이전 재생</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="324"/>
++        <location filename="../rootmenu.cpp" line="325"/>
+         <source>Play Next</source>
+         <translation>다음 재생</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="327"/>
++        <location filename="../rootmenu.cpp" line="328"/>
+         <source>Playback Speed</source>
+         <translation>재생 속도</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="328"/>
+-        <location filename="../rootmenu.cpp" line="408"/>
+-        <location filename="../rootmenu.cpp" line="428"/>
++        <location filename="../rootmenu.cpp" line="329"/>
++        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="429"/>
+         <source>Reset</source>
+         <translation>초기화</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="332"/>
++        <location filename="../rootmenu.cpp" line="333"/>
+         <source>A-B Repeat</source>
+         <translation>구간 반복</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="333"/>
++        <location filename="../rootmenu.cpp" line="334"/>
+         <source>Set Range to Current Time</source>
+         <translation>현재 시간으로 구간 지정</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="334"/>
++        <location filename="../rootmenu.cpp" line="335"/>
+         <source>Repeat Current Subtitle</source>
+         <translation>현재 자막 반복</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="335"/>
++        <location filename="../rootmenu.cpp" line="336"/>
+         <source>Quit</source>
+         <translation>종료</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="338"/>
++        <location filename="../rootmenu.cpp" line="339"/>
+         <source>Seek</source>
+         <translation>탐색</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="339"/>
++        <location filename="../rootmenu.cpp" line="340"/>
+         <source>Forward %1sec</source>
+         <translation>%1초 앞으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="343"/>
++        <location filename="../rootmenu.cpp" line="344"/>
+         <source>Backward %1sec</source>
+         <translation>%1초 뒤로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="348"/>
++        <location filename="../rootmenu.cpp" line="349"/>
+         <source>To Previous Subtitle</source>
+         <translation>이전 자막으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="349"/>
++        <location filename="../rootmenu.cpp" line="350"/>
+         <source>To Beginning of Current Subtitle</source>
+         <translation>현재 자막의 시작으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="350"/>
++        <location filename="../rootmenu.cpp" line="351"/>
+         <source>To Next Subtitle</source>
+         <translation>다음 자막으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="352"/>
++        <location filename="../rootmenu.cpp" line="353"/>
+         <source>Title</source>
+         <translation>타이틀</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="353"/>
++        <location filename="../rootmenu.cpp" line="354"/>
+         <source>Chapter</source>
+         <translation>챕터</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="356"/>
++        <location filename="../rootmenu.cpp" line="357"/>
+         <source>Subtitle</source>
+         <translation>자막</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="358"/>
++        <location filename="../rootmenu.cpp" line="359"/>
+         <source>Subtitle File</source>
+         <translation>자막 파일</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="361"/>
++        <location filename="../rootmenu.cpp" line="362"/>
+         <source>Hide</source>
+         <translation>숨기기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="362"/>
++        <location filename="../rootmenu.cpp" line="363"/>
+         <source>Subtitle Track</source>
+         <translation>자막 트랙</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="364"/>
++        <location filename="../rootmenu.cpp" line="365"/>
+         <source>Display on Letterbox</source>
+         <translation>레터박스에 표시</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="365"/>
++        <location filename="../rootmenu.cpp" line="366"/>
+         <source>Display in Video</source>
+         <translation>비디오에 표시</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="366"/>
++        <location filename="../rootmenu.cpp" line="367"/>
+         <source>Top Alignment</source>
+         <translation>상단 정렬</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="367"/>
++        <location filename="../rootmenu.cpp" line="368"/>
+         <source>Bottom Alignment</source>
+         <translation>하단 정렬</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="369"/>
++        <location filename="../rootmenu.cpp" line="370"/>
+         <source>Up %1%</source>
+         <translation>%1% 위로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="370"/>
++        <location filename="../rootmenu.cpp" line="371"/>
+         <source>Down %1%</source>
+         <translation>%1% 아래로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="371"/>
++        <location filename="../rootmenu.cpp" line="372"/>
+         <source>Reset Sync</source>
+         <translation>싱크 초기화</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="372"/>
++        <location filename="../rootmenu.cpp" line="373"/>
+         <source>Sync %1sec</source>
+         <translation>싱크 %1초</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="375"/>
++        <location filename="../rootmenu.cpp" line="376"/>
+         <source>Video</source>
+         <translation>비디오</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="376"/>
++        <location filename="../rootmenu.cpp" line="377"/>
+         <source>Video Track</source>
+         <translation>비디오 트랙</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="379"/>
++        <location filename="../rootmenu.cpp" line="380"/>
+         <source>Aspect Ratio</source>
+         <translation>화면 비율</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="380"/>
+-        <location filename="../rootmenu.cpp" line="437"/>
++        <location filename="../rootmenu.cpp" line="381"/>
++        <location filename="../rootmenu.cpp" line="438"/>
+         <source>Auto</source>
+         <translation>자동</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="381"/>
+-        <location filename="../rootmenu.cpp" line="390"/>
++        <location filename="../rootmenu.cpp" line="382"/>
++        <location filename="../rootmenu.cpp" line="391"/>
+         <source>Same as Window</source>
+         <translation>창 비율에 맞춤</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="382"/>
+-        <location filename="../rootmenu.cpp" line="391"/>
++        <location filename="../rootmenu.cpp" line="383"/>
++        <location filename="../rootmenu.cpp" line="392"/>
+         <source>4:3 (TV)</source>
+         <translation>4:3 (TV)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="383"/>
+-        <location filename="../rootmenu.cpp" line="392"/>
++        <location filename="../rootmenu.cpp" line="384"/>
++        <location filename="../rootmenu.cpp" line="393"/>
+         <source>16:9 (HDTV)</source>
+         <translation>16:9 (HDTV)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="384"/>
+-        <location filename="../rootmenu.cpp" line="393"/>
++        <location filename="../rootmenu.cpp" line="385"/>
++        <location filename="../rootmenu.cpp" line="394"/>
+         <source>1.85:1 (Wide Vision)</source>
+         <translation>1.85:1 (와이드비전)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="385"/>
+-        <location filename="../rootmenu.cpp" line="394"/>
++        <location filename="../rootmenu.cpp" line="386"/>
++        <location filename="../rootmenu.cpp" line="395"/>
+         <source>2.35:1 (CinemaScope)</source>
+         <translation>2.35:1 (시네마스코프)</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="388"/>
++        <location filename="../rootmenu.cpp" line="389"/>
+         <source>Crop</source>
+         <translation>잘라내기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="389"/>
++        <location filename="../rootmenu.cpp" line="390"/>
+         <source>Off</source>
+         <translation>끄기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="397"/>
++        <location filename="../rootmenu.cpp" line="398"/>
+         <source>Screen Alignment</source>
+         <translation>화면 정렬</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="399"/>
++        <location filename="../rootmenu.cpp" line="400"/>
+         <source>Top</source>
+         <translation>상단</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="400"/>
++        <location filename="../rootmenu.cpp" line="401"/>
+         <source>Vertical Center</source>
+         <translation>수직 중앙</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="401"/>
++        <location filename="../rootmenu.cpp" line="402"/>
+         <source>Bottom</source>
+         <translation>하단</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="402"/>
++        <location filename="../rootmenu.cpp" line="403"/>
+         <source>Left</source>
+         <translation>왼쪽</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="403"/>
++        <location filename="../rootmenu.cpp" line="404"/>
+         <source>Horizontal Center</source>
+         <translation>수평 중앙</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="404"/>
++        <location filename="../rootmenu.cpp" line="405"/>
+         <source>Right</source>
+         <translation>오른쪽</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="407"/>
++        <location filename="../rootmenu.cpp" line="408"/>
+         <source>Screen Position</source>
+         <translation>화면 위치</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="410"/>
+         <source>Up</source>
+         <translation>위로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="410"/>
++        <location filename="../rootmenu.cpp" line="411"/>
+         <source>Down</source>
+         <translation>아래로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="411"/>
++        <location filename="../rootmenu.cpp" line="412"/>
+         <source>To Left</source>
+         <translation>왼쪽으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="412"/>
++        <location filename="../rootmenu.cpp" line="413"/>
+         <source>To Right</source>
+         <translation>오른쪽으로</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="415"/>
++        <location filename="../rootmenu.cpp" line="416"/>
+         <source>Filter</source>
+         <translation>필터</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="416"/>
++        <location filename="../rootmenu.cpp" line="417"/>
+         <source>Flip Vertically</source>
+         <translation>상하 반전</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="417"/>
++        <location filename="../rootmenu.cpp" line="418"/>
+         <source>Flip Horizontally</source>
+         <translation>좌우 반전</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="418"/>
++        <location filename="../rootmenu.cpp" line="419"/>
+         <source>Blur</source>
+         <translation>부드럽게</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="419"/>
++        <location filename="../rootmenu.cpp" line="420"/>
+         <source>Sharpen</source>
+         <translation>선명하게</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="420"/>
++        <location filename="../rootmenu.cpp" line="421"/>
+         <source>Grayscale</source>
+         <translation>그레이스케일</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="421"/>
++        <location filename="../rootmenu.cpp" line="422"/>
+         <source>Invert Color</source>
+         <translation>색 반전</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="422"/>
++        <location filename="../rootmenu.cpp" line="423"/>
+         <source>Adjust Constrast</source>
+         <translation>명암 조절</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="423"/>
++        <location filename="../rootmenu.cpp" line="424"/>
+         <source>Auto Contrast</source>
+         <translation>자동 명암</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="424"/>
++        <location filename="../rootmenu.cpp" line="425"/>
+         <source>Ignore All Filters</source>
+         <translation>모든 필터 무시</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="427"/>
++        <location filename="../rootmenu.cpp" line="428"/>
+         <source>Color</source>
+         <translation>색</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="429"/>
++        <location filename="../rootmenu.cpp" line="430"/>
+         <source>Brightness %1%</source>
+         <translation>밝기 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="430"/>
++        <location filename="../rootmenu.cpp" line="431"/>
+         <source>Saturation %1%</source>
+         <translation>채도 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="431"/>
++        <location filename="../rootmenu.cpp" line="432"/>
+         <source>Contrast %1%</source>
+         <translation>대비 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="432"/>
++        <location filename="../rootmenu.cpp" line="433"/>
+         <source>Hue %1%</source>
+         <translation>색조 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="433"/>
++        <location filename="../rootmenu.cpp" line="434"/>
+         <source>Take Snapshot</source>
+         <translation>스냅샷 찍기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="436"/>
++        <location filename="../rootmenu.cpp" line="437"/>
+         <source>Overlay</source>
+         <translation>오버레이</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="438"/>
++        <location filename="../rootmenu.cpp" line="439"/>
+         <source>Framebuffer Object</source>
+         <translation>프레임버퍼 오브젝트</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="439"/>
++        <location filename="../rootmenu.cpp" line="440"/>
+         <source>Pixmap</source>
+         <translation>픽스맵</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="442"/>
++        <location filename="../rootmenu.cpp" line="443"/>
+         <source>Audio</source>
+         <translation>오디오</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="443"/>
++        <location filename="../rootmenu.cpp" line="444"/>
+         <source>Audio Track</source>
+         <translation>오디오 트랙</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="444"/>
++        <location filename="../rootmenu.cpp" line="445"/>
+         <source>Mute</source>
+         <translation>음소거</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="445"/>
++        <location filename="../rootmenu.cpp" line="446"/>
+         <source>Normalize Volume</source>
+         <translation>소리 평준화</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="447"/>
++        <location filename="../rootmenu.cpp" line="448"/>
+         <source>Volume %1%</source>
+         <translation>볼륨 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="449"/>
++        <location filename="../rootmenu.cpp" line="450"/>
+         <source>Amp %1%</source>
+         <translation>앰프 %1%</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="452"/>
++        <location filename="../rootmenu.cpp" line="453"/>
+         <source>Tools</source>
+         <translation>도구</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="453"/>
++        <location filename="../rootmenu.cpp" line="454"/>
+         <source>Playlist</source>
+         <translation>재생 목록</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="454"/>
++        <location filename="../rootmenu.cpp" line="455"/>
+         <source>Favorites</source>
+         <translation>즐겨찾기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="455"/>
++        <location filename="../rootmenu.cpp" line="456"/>
+         <source>Play History</source>
+         <translation>재생 기록</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="456"/>
++        <location filename="../rootmenu.cpp" line="457"/>
+         <source>Subtitle View</source>
+         <translation>자막 보기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="457"/>
++        <location filename="../rootmenu.cpp" line="458"/>
+         <source>Preferences</source>
+         <translation>환경 설정</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="458"/>
++        <location filename="../rootmenu.cpp" line="459"/>
+         <source>Play Information</source>
+         <translation>재생 정보</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="461"/>
++        <location filename="../rootmenu.cpp" line="462"/>
+         <source>Window</source>
+         <translation>창</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="462"/>
++        <location filename="../rootmenu.cpp" line="463"/>
+         <source>Always Stay on Top</source>
+         <translation>항상 맨 위에 표시</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="463"/>
++        <location filename="../rootmenu.cpp" line="464"/>
+         <source>Stay on Top Playing</source>
+         <translation>재생중에만 맨 위에 표시</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="464"/>
++        <location filename="../rootmenu.cpp" line="465"/>
+         <source>Don&apos;t Stay on Top</source>
+         <translation>맨위에 표시 안함</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="465"/>
++        <location filename="../rootmenu.cpp" line="466"/>
+         <source>Proper Size</source>
+         <translation>적당한 크기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="466"/>
++        <location filename="../rootmenu.cpp" line="467"/>
+         <source>Fullscreen</source>
+         <translation>전체 화면</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="467"/>
++        <location filename="../rootmenu.cpp" line="468"/>
+         <source>Minimize</source>
+         <translation>최소화</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="468"/>
++        <location filename="../rootmenu.cpp" line="469"/>
+         <source>Maximize</source>
+         <translation>최대화</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="469"/>
++        <location filename="../rootmenu.cpp" line="470"/>
+         <source>Close</source>
+         <translation>닫기</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="472"/>
++        <location filename="../rootmenu.cpp" line="473"/>
+         <source>Help</source>
+         <translation>도움말</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="473"/>
++        <location filename="../rootmenu.cpp" line="474"/>
+         <source>About %1</source>
+         <translation>%1 정보</translation>
+     </message>
+     <message>
+-        <location filename="../rootmenu.cpp" line="474"/>
++        <location filename="../rootmenu.cpp" line="475"/>
+         <source>Exit</source>
+         <translation>종료</translation>
+     </message>
+diff -urN cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ru.ts cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ru.ts
+--- cmplayer-0.5.4/src/cmplayer/translations/cmplayer_ru.ts	1970-01-01 03:00:00.000000000 +0300
++++ cmplayer-0.5.4-patched/src/cmplayer/translations/cmplayer_ru.ts	2011-11-28 01:04:08.000000000 +0400
+@@ -0,0 +1,2165 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.0" language="ru_RU">
++<context>
++    <name>AboutDialog</name>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="14"/>
++        <source>About CMPlayer</source>
++        <translation>О программе CMPlayer</translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="91"/>
++        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
++&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
++p, li { white-space: pre-wrap; }
++&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Lucida Grande&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
++&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Version: %1&lt;br /&gt;VLC: %2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="125"/>
++        <source>If you find a bug or have any idea for CMPlayer, please contact by followings:</source>
++        <translation>Если вы нашли ошибку или у вас есть идеи для CMPlayer, обращайтесь:</translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="141"/>
++        <source>Developer&apos;s blog: %1
++Developer&apos;s E-mail: %2
++Project homepage: %3</source>
++        <translation>Блог разработчиков: %1
++E-mail разработчиков: %2
++Домашняя страница проекта: %3</translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="169"/>
++        <source>License</source>
++        <translation>Лицензия</translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="202"/>
++        <source>View Full Text of GPL</source>
++        <translation>Показать весь текст GPL</translation>
++    </message>
++    <message>
++        <location filename="../ui/aboutdialog.ui" line="212"/>
++        <source>View Full Text of MPL </source>
++        <translation>Показать весь текст MPL </translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="372"/>
++        <source>Close</source>
++        <translation>Закрыть</translation>
++    </message>
++</context>
++<context>
++    <name>App</name>
++    <message>
++        <location filename="../app.cpp" line="177"/>
++        <source>CMPlayer needs OpenGL to render video. Your system has no OpenGL support. Exit CMPlayer.</source>
++        <translation>CMPlayer необходим OpenGL для отображения видео. Ваша система не поддержкивает OpenGL. CMPlayer закрывается.</translation>
++    </message>
++</context>
++<context>
++    <name>ClickAction</name>
++    <message>
++        <location filename="../enums.hpp" line="482"/>
++        <source>Open a file</source>
++        <translation>Открыть файл</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="484"/>
++        <source>Toggle fullscreen mode</source>
++        <translation>Переключить в полноэкранный режим</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="486"/>
++        <source>Toggle play/pause</source>
++        <translation>Переключить Воспроизведение/Пауза</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="488"/>
++        <source>Toggle mute/unmute</source>
++        <translation>Переключить Отключение/Включение звука</translation>
++    </message>
++</context>
++<context>
++    <name>ColorSelectWidget</name>
++    <message>
++        <location filename="../widgets.cpp" line="265"/>
++        <source>Transparency</source>
++        <translation>Прозрачность</translation>
++    </message>
++</context>
++<context>
++    <name>ControlWidget</name>
++    <message>
++        <location filename="../controlwidget.cpp" line="313"/>
++        <source>Playing</source>
++        <translation>Проирывается</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="315"/>
++        <source>Stopped</source>
++        <translation>Остановлен</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="317"/>
++        <source>Finished</source>
++        <translation>Завершён</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="318"/>
++        <source>Paused</source>
++        <translation>Остановлен</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="325"/>
++        <source>Backward</source>
++        <translation>Назад</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="326"/>
++        <source>Forward</source>
++        <translation>Вперёд</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="327"/>
++        <source>Next</source>
++        <translation>Следующий</translation>
++    </message>
++    <message>
++        <location filename="../controlwidget.cpp" line="328"/>
++        <source>Previous</source>
++        <translation>Предыдущий</translation>
++    </message>
++</context>
++<context>
++    <name>EncodingComboBox</name>
++    <message>
++        <location filename="../widgets.cpp" line="152"/>
++        <source>Western European Languages</source>
++        <translation>Западноевропейские Языки</translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="153"/>
++        <source>Western European Languages With Euro</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="154"/>
++        <source>Slavic/Central European Languages</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="155"/>
++        <source>Slavic/Central European Windows</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="156"/>
++        <source>Esperanto, Galician, Maltese, Turkish</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="157"/>
++        <source>Old Baltic Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="158"/>
++        <source>Cyrillic</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="159"/>
++        <source>Cyrillic Windows</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="160"/>
++        <source>Arabic</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="161"/>
++        <source>Modern Greek</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="162"/>
++        <source>Turkish</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="163"/>
++        <source>Baltic</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="164"/>
++        <source>Celtic</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="165"/>
++        <source>Hebrew Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="166"/>
++        <source>Russian</source>
++        <translation>Русский</translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="167"/>
++        <source>Ukrainian, Belarusian</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="168"/>
++        <source>Simplified Chinese Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="169"/>
++        <source>Traditional Chinese Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="170"/>
++        <source>Japanese Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="171"/>
++        <source>Korean Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="172"/>
++        <source>Thai Charset</source>
++        <translation type="unfinished"></translation>
++    </message>
++</context>
++<context>
++    <name>FavoritesView</name>
++    <message>
++        <location filename="../favoritesview.cpp" line="131"/>
++        <source>Add New Media</source>
++        <translation>Добавить новые файлы</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="132"/>
++        <source>Add Current Media</source>
++        <translation>Добавить текущие файлы</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="133"/>
++        <source>Add Folder</source>
++        <translation>Добавить папку</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="134"/>
++        <source>Modify</source>
++        <translation>Изменить</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="135"/>
++        <source>Erase</source>
++        <translation>Стереть</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="137"/>
++        <source>Name</source>
++        <translation>Имя</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="137"/>
++        <source>Category</source>
++        <translation>Категория</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="137"/>
++        <source>Location</source>
++        <translation>Расположение</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="149"/>
++        <source>Favorites</source>
++        <translation>Избранное</translation>
++    </message>
++</context>
++<context>
++    <name>FavoritesView::FolderItem</name>
++    <message>
++        <location filename="../favoritesview.cpp" line="29"/>
++        <source>Folder</source>
++        <translation>Папка</translation>
++    </message>
++</context>
++<context>
++    <name>FavoritesView::ItemDialog</name>
++    <message>
++        <location filename="../favoritesview.cpp" line="75"/>
++        <source>Name</source>
++        <translation>Имя</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="79"/>
++        <source>Location</source>
++        <translation>Расположение</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="82"/>
++        <source>Add to top level</source>
++        <translation>Добавить в популярные</translation>
++    </message>
++</context>
++<context>
++    <name>FavoritesView::MrlItem</name>
++    <message>
++        <location filename="../favoritesview.cpp" line="46"/>
++        <source>Playlist</source>
++        <translation>Плейлист</translation>
++    </message>
++    <message>
++        <location filename="../favoritesview.cpp" line="48"/>
++        <source>Media</source>
++        <translation>Медиа</translation>
++    </message>
++</context>
++<context>
++    <name>FontOptionWidget</name>
++    <message>
++        <location filename="../widgets.cpp" line="207"/>
++        <source>Bold</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="208"/>
++        <source>Italic</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="209"/>
++        <source>Underline</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../widgets.cpp" line="210"/>
++        <source>Strike Out</source>
++        <translation type="unfinished"></translation>
++    </message>
++</context>
++<context>
++    <name>GeneratePlaylist</name>
++    <message>
++        <location filename="../enums.hpp" line="227"/>
++        <source>Add files which have similar names</source>
++        <translation>Добавить файлы, которые имеют похожие названия</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="229"/>
++        <source>Add all files in the same folder</source>
++        <translation>Добавить все файлы в одну папку</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="231"/>
++        <source>Do not add any other files</source>
++        <translation>Не добавлять больше файлы</translation>
++    </message>
++</context>
++<context>
++    <name>GetShortcutDialog</name>
++    <message>
++        <location filename="../dialogs.cpp" line="122"/>
++        <source>Get Shortcut</source>
++        <translation>Получить ярлык</translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="126"/>
++        <source>Erase</source>
++        <translation>Стереть</translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="129"/>
++        <source>Ok</source>
++        <translation>Да</translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="131"/>
++        <source>Cancel</source>
++        <translation>Отменить</translation>
++    </message>
++</context>
++<context>
++    <name>GetUrlDialog</name>
++    <message>
++        <location filename="../dialogs.cpp" line="273"/>
++        <source>URL</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="277"/>
++        <source>Encoding for Playlist</source>
++        <translation>Кодировка для воспроизведения</translation>
++    </message>
++</context>
++<context>
++    <name>HistoryView</name>
++    <message>
++        <location filename="../historyview.cpp" line="70"/>
++        <source>Name</source>
++        <translation>Имя</translation>
++    </message>
++    <message>
++        <location filename="../historyview.cpp" line="71"/>
++        <source>Latest Play</source>
++        <translation>Последние проигранные</translation>
++    </message>
++    <message>
++        <location filename="../historyview.cpp" line="72"/>
++        <source>Location</source>
++        <translation>Расположение</translation>
++    </message>
++    <message>
++        <location filename="../historyview.cpp" line="89"/>
++        <source>Erase</source>
++        <translation>Стереть</translation>
++    </message>
++    <message>
++        <location filename="../historyview.cpp" line="90"/>
++        <source>Clear</source>
++        <translation>Очистить</translation>
++    </message>
++    <message>
++        <location filename="../historyview.cpp" line="94"/>
++        <source>Play History</source>
++        <translation>Воспроизвести историю</translation>
++    </message>
++</context>
++<context>
++    <name>Info</name>
++    <message>
++        <location filename="../info.cpp" line="48"/>
++        <source>Video Files</source>
++        <translation>Видео файлы</translation>
++    </message>
++    <message>
++        <location filename="../info.cpp" line="50"/>
++        <source>Audio Files</source>
++        <translation>Аудио файлы</translation>
++    </message>
++    <message>
++        <location filename="../info.cpp" line="52"/>
++        <source>All Files</source>
++        <translation>Все файлы</translation>
++    </message>
++</context>
++<context>
++    <name>MainWindow</name>
++    <message>
++        <location filename="../mainwindow.cpp" line="294"/>
++        <source>Open File</source>
++        <translation>Открыть файл</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="359"/>
++        <source>Subtitle Files</source>
++        <translation>Файлы субтитров</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="365"/>
++        <source>Open Subtitle</source>
++        <translation>Открыть субтитры</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="398"/>
++        <source>Seeking</source>
++        <translation>Поиск</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="398"/>
++        <source>sec</source>
++        <translation>сек</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="425"/>
++        <source>Volume</source>
++        <translation>Громкость</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="430"/>
++        <source>Mute</source>
++        <translation>Без звука</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="478"/>
++        <source>Pause</source>
++        <translation>Пауза</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="481"/>
++        <source>Play</source>
++        <translation>Воспроизведение</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="492"/>
++        <source>Speed</source>
++        <translation>Скорость</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="498"/>
++        <source>Amp</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="516"/>
++        <source>Set A to %1</source>
++        <translation>Установить A в %1</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="520"/>
++        <source>Range is too short!</source>
++        <translation>Диапазон слишком короткий!</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="525"/>
++        <source>Set B to %1. Start to repeat!</source>
++        <translation>Установить B в %1. Начать повторение!</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="533"/>
++        <source>Quit repeating</source>
++        <translation>Завершить повторение</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="537"/>
++        <source>Repeat current subtitle</source>
++        <translation>Повторять текущие субтитры</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="540"/>
++        <source>A-B Repeat</source>
++        <translation>Повторять A-B</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="546"/>
++        <source>Subtitle Position</source>
++        <translation>Положение субтитров</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="718"/>
++        <source>CMPlayer will be running in the system tray when the window closed.&lt;br&gt;You can change this behavior in the preferences.&lt;br&gt;If you want to exit CMPlayer, please use &apos;Exit&apos; menu.</source>
++        <translation>Когда окно закрыто, CMPlayer будет находиться в системном трее.&lt;br&gt;Вы можете изменить это в Параметрах.&lt;br&gt;Если вы хотите выйти из CMPlayer, используйте меню &apos;Выход&apos;.</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="722"/>
++        <source>Do not display this message again</source>
++        <translation>Не показывать больше это сообщение</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="737"/>
++        <source>On</source>
++        <translation>Вкл</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="737"/>
++        <source>Off</source>
++        <translation>Выкл</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="742"/>
++        <source>Normalize Volume</source>
++        <translation>Нормализовать громкость</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="747"/>
++        <source>Autoscale Pitch</source>
++        <translation>Автомасштаб</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="755"/>
++        <source>Reset brightness, contrast, saturation and hue</source>
++        <translation>Сбросить яркость, контраст, насыщенность и оттенок</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="763"/>
++        <source>Brightness</source>
++        <translation>Яркость</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="766"/>
++        <source>Saturation</source>
++        <translation>Насыщеность</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="769"/>
++        <source>Hue</source>
++        <translation>Оттенок</translation>
++    </message>
++    <message>
++        <location filename="../mainwindow.cpp" line="772"/>
++        <source>Contrast</source>
++        <translation>Контраст</translation>
++    </message>
++</context>
++<context>
++    <name>OpenDVDDialog</name>
++    <message>
++        <location filename="../ui/opendvddialog.ui" line="14"/>
++        <source>Select DVD Device</source>
++        <translation>Выберать устройств DVD</translation>
++    </message>
++    <message>
++        <location filename="../ui/opendvddialog.ui" line="20"/>
++        <source>Open next device:</source>
++        <translation>Открыть следующее устройство:</translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="421"/>
++        <source>Selected device is available.</source>
++        <translation>Устройство доступно.</translation>
++    </message>
++    <message>
++        <location filename="../dialogs.cpp" line="424"/>
++        <source>Selected device doesn&apos;t exists.</source>
++        <translation>Устройство не существует.</translation>
++    </message>
++</context>
++<context>
++    <name>OsdAutoSize</name>
++    <message>
++        <location filename="../enums.hpp" line="419"/>
++        <source>Fit to width of video</source>
++        <translation>Подогнать видео по ширине</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="421"/>
++        <source>Fit to height of video</source>
++        <translation>Подогнать видео по высоте</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="423"/>
++        <source>Fit to diagonal of video</source>
++        <translation>Подогнать видео по диагонали</translation>
++    </message>
++</context>
++<context>
++    <name>Overlay</name>
++    <message>
++        <location filename="../enums.hpp" line="165"/>
++        <source>Auto</source>
++        <translation>Авто</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="167"/>
++        <source>Framebuffer Object</source>
++        <translation>Фреймбуфер</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="169"/>
++        <source>Pixmap</source>
++        <translation type="unfinished"></translation>
++    </message>
++</context>
++<context>
++    <name>PlayEngine</name>
++    <message>
++        <location filename="../playengine.cpp" line="204"/>
++        <source>Stopped Record Found</source>
++        <translation>Остановленная запись найдена</translation>
++    </message>
++    <message>
++        <location filename="../playengine.cpp" line="205"/>
++        <source>This file was stopped during its playing before.
++Played Date: %1
++Stopped Time: %2
++Do you want to start from where it&apos;s stopped?
++(You can configure not to ask anymore in the preferecences.)</source>
++        <translation>Этот файл был ранее остановлен во время его воспроизведения.
++Дата воспроизведения: %1
++Время остановки:%2
++Вы хотите начать с места, где он остановился?
++(Вы можете отключить эти вопросы в Параметрах.)</translation>
++    </message>
++</context>
++<context>
++    <name>PlayInfoView</name>
++    <message>
++        <location filename="../playinfoview.cpp" line="107"/>
++        <source>CPU Usage</source>
++        <translation>Использование CPU</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="108"/>
++        <source>Memory Usage</source>
++        <translation>Использование памяти</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="110"/>
++        <source>Video Information</source>
++        <translation>Информация о видео</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="111"/>
++        <source>Pixel Size</source>
++        <translation>Размер пикселя</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="112"/>
++        <source>Input</source>
++        <translation>Вход</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="113"/>
++        <source>Output</source>
++        <translation>Выход</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="116"/>
++        <source>Audio Information</source>
++        <translation>Информация об аудио</translation>
++    </message>
++    <message>
++        <location filename="../playinfoview.cpp" line="117"/>
++        <source>Normalizer</source>
++        <translation>Нормализовать</translation>
++    </message>
++</context>
++<context>
++    <name>PlaylistModel</name>
++    <message>
++        <location filename="../playlistmodel.cpp" line="46"/>
++        <source>Name</source>
++        <translation>Имя</translation>
++    </message>
++    <message>
++        <location filename="../playlistmodel.cpp" line="48"/>
++        <source>Location</source>
++        <translation>Расположение</translation>
++    </message>
++</context>
++<context>
++    <name>PlaylistView</name>
++    <message>
++        <location filename="../playlistview.cpp" line="40"/>
++        <source>Open</source>
++        <translation>Открыть</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="41"/>
++        <source>Save</source>
++        <translation>Сохранить</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="42"/>
++        <source>Add File</source>
++        <translation>Добавить файл</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="43"/>
++        <source>Add URL</source>
++        <translation>Добавить адрес</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="44"/>
++        <source>Erase</source>
++        <translation>Стереть</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="45"/>
++        <source>Up</source>
++        <translation>Вверх</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="46"/>
++        <source>Down</source>
++        <translation>Вниз</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="47"/>
++        <source>Clear</source>
++        <translation>Очистить</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="71"/>
++        <location filename="../playlistview.cpp" line="129"/>
++        <location filename="../playlistview.cpp" line="143"/>
++        <source>Playlist</source>
++        <translation>Плейлист</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="81"/>
++        <location filename="../playlistview.cpp" line="131"/>
++        <source>Open File</source>
++        <translation>Открыть файл</translation>
++    </message>
++    <message>
++        <location filename="../playlistview.cpp" line="143"/>
++        <source>Save File</source>
++        <translation>Сохранить файл</translation>
++    </message>
++</context>
++<context>
++    <name>Pref::Dialog</name>
++    <message>
++        <location filename="../pref_dialog.cpp" line="82"/>
++        <source>Preferences</source>
++        <translation>Параметры</translation>
++    </message>
++</context>
++<context>
++    <name>Pref::Widget</name>
++    <message>
++        <location filename="../pref_widget.cpp" line="192"/>
++        <source>Double Click:</source>
++        <translation>Двойной щелчёк:</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="193"/>
++        <source>Middle Click:</source>
++        <translation>Щелкчёк средней кнопкой:</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="194"/>
++        <source>Wheel Scroll:</source>
++        <translation>Колесо прокрутки:</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="195"/>
++        <source>All</source>
++        <translation>Все</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="394"/>
++        <source>System Default Locale</source>
++        <translation>Системная локаль по умолчанию</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="398"/>
++        <source>English</source>
++        <translation>Английская</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="401"/>
++        <source>Japanese</source>
++        <translation>Японская</translation>
++    </message>
++    <message>
++        <location filename="../pref_widget.cpp" line="404"/>
++        <source>Korean</source>
++        <translation variants="yes">
++            <lengthvariant>Корейская</lengthvariant>
++            <lengthvariant></lengthvariant>
++        </translation>
++    </message>
++</context>
++<context>
++    <name>Pref_Widget</name>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="14"/>
++        <source>Preferences</source>
++        <translation>Параметры</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="27"/>
++        <source>Play</source>
++        <translation>Поведение</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="42"/>
++        <source>Pause when minimized</source>
++        <translation>Пауза при сворачивании</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="52"/>
++        <source>Apply on video only</source>
++        <translation>Применять только для видео</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="72"/>
++        <source>Remember and start from stopped time when replay</source>
++        <translation>Запомнить и начать воспроизведение с места остановки</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="82"/>
++        <source>Ask when stopped record found</source>
++        <translation>Спросить, когда остановленная запись найдена</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="99"/>
++        <source>Generate Playlist:</source>
++        <translation>Создать плейлист:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="118"/>
++        <source>Hide cursor when it doesn&apos;t move during </source>
++        <translation>Скрывать курсор, когда он не движется</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="131"/>
++        <location filename="../ui/pref_widget.ui" line="1156"/>
++        <location filename="../ui/pref_widget.ui" line="1182"/>
++        <location filename="../ui/pref_widget.ui" line="1347"/>
++        <location filename="../ui/pref_widget.ui" line="1430"/>
++        <source>sec</source>
++        <translation>сек</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="146"/>
++        <source>Disable screensaver while playing</source>
++        <translation>Отключить хранитель экрана при воспроизведении</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="162"/>
++        <source>Add next files to playlist when opening a file.</source>
++        <translation>При открытии следующих файлов добавить их в плейлист.</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="172"/>
++        <source>Video</source>
++        <translation>Видео</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="187"/>
++        <source>Blur Kernel:</source>
++        <translation>Размытие картинки:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="196"/>
++        <location filename="../ui/pref_widget.ui" line="249"/>
++        <source>Center</source>
++        <translation>Центр</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="210"/>
++        <location filename="../ui/pref_widget.ui" line="263"/>
++        <source>Neighbor</source>
++        <translation>Края</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="224"/>
++        <location filename="../ui/pref_widget.ui" line="277"/>
++        <source>Diagonal</source>
++        <translation>Диагональ</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="240"/>
++        <source>Sharpen Kernel:</source>
++        <translation>Резкость картинки:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="293"/>
++        <source>Adjust Contrast:</source>
++        <translation>Регулировка контраста:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="302"/>
++        <source>Min. Luma</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="319"/>
++        <source>Max. Luma</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="341"/>
++        <source>Auto Contrast:</source>
++        <translation>Авто контрастность:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="350"/>
++        <source>Threshold for auto contrast</source>
++        <translation>Порог для авто контраста</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="378"/>
++        <source>Audio</source>
++        <translation>Аудио</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="390"/>
++        <source>Normalizer:</source>
++        <translation>Нормализовать:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="399"/>
++        <source>Gain</source>
++        <translation>Усиление</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="416"/>
++        <source>Smoothness</source>
++        <translation>Плавность</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="441"/>
++        <source>Subtitle</source>
++        <translation>Субтитры</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="455"/>
++        <source>Load</source>
++        <translation>Субтитры</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="466"/>
++        <source>Auto-load:</source>
++        <translation>Авто загрузка:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="473"/>
++        <source>Load next subtitles when starting to play a file.</source>
++        <translation>Загружать следующие субтитры при старте воспроизведения.</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="483"/>
++        <source>Auto-select:</source>
++        <translation>Авто выбор:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="490"/>
++        <source>Select next subtitles in automatically loaded subtitles.</source>
++        <translation>Выборать следующие субтитры при авто загрузки субтитров.</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="503"/>
++        <source>Extension:</source>
++        <translation>Расширение:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="527"/>
++        <source>Encoding:</source>
++        <translation>Кодировка:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="534"/>
++        <source>Open subtitle file with selected encoding.</source>
++        <translation>Открытыть файл субтитров с выбранной кодировкой.</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="547"/>
++        <source>Auto-dectection:</source>
++        <translation>Авто определение:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="556"/>
++        <source>Enable when the accuracy is over</source>
++        <translation>Включить, когда точность более</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="600"/>
++        <source>Display</source>
++        <translation>Отображение</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="611"/>
++        <source>Font:</source>
++        <translation>Шрифт:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="624"/>
++        <source>Color:</source>
++        <translation>Цвет:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="633"/>
++        <source>Foreground</source>
++        <translation>Передний план</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="643"/>
++        <source>Background</source>
++        <translation>Задний план</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="655"/>
++        <source>Size:</source>
++        <translation>Размер:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="695"/>
++        <source>Shadow:</source>
++        <translation>Тень:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="704"/>
++        <source>X-Offset</source>
++        <translation>Смещение X</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="733"/>
++        <source>Y-Offset</source>
++        <translation>Смещение Y</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="774"/>
++        <source>Display Time:</source>
++        <translation>Время отображения:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="781"/>
++        <source>When display time is not specifid in subtitle, caculate interval wih this value.</source>
++        <translation>Когда время отбражения субтитров не верно, интервал будет рассчитан по этому значению.</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="787"/>
++        <source>msec/character</source>
++        <translation>мс</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="828"/>
++        <source>Blur</source>
++        <translation>Размытие</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="835"/>
++        <source>Off</source>
++        <translation>Выкл</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="850"/>
++        <source>Unified/Multi-Subtitle</source>
++        <translation>Мульти субтитры</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="856"/>
++        <source>You can specify the order of unified(mulit) subtitles with the &apos;Name&apos; property in subtitle file.
++If not specified, They will be displayed in selected order.
++e.g.: English, Korean</source>
++        <translation>Вы можете указать порядок выбора субтитров в боксе &apos;Имя&apos; в настройках субтитров.
++Если не указано, они будут отображаться в выбранном порядке.
++например: Английский, Корейский</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="889"/>
++        <source>UI</source>
++        <translation>Окно</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="903"/>
++        <source>Application</source>
++        <translation>Приложение</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="914"/>
++        <source>Run only single CMPlayer application at the same time</source>
++        <translation>Запускать одновременно только одно приложение CMPlayer</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="931"/>
++        <source>Locale:</source>
++        <translation>Локаль:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="948"/>
++        <source>Window Style:</source>
++        <translation>Стиль окна:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="958"/>
++        <source>System Tray:</source>
++        <translation>Системный лоток:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="965"/>
++        <source>Enable system tray icon</source>
++        <translation>Включить значок в системном лотке</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="985"/>
++        <source>Hide window rather than quit when closed </source>
++        <translation>Скрыть окно, а не выходить при закрытии</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="992"/>
++        <source>(Linux Only)</source>
++        <translation>(Только для Linux)</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1002"/>
++        <source>Shortcut</source>
++        <translation>Горячие клавиши</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1012"/>
++        <source>Menu</source>
++        <translation>Меню</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1017"/>
++        <location filename="../ui/pref_widget.ui" line="1064"/>
++        <source>Shortcut1</source>
++        <translation>Горячие клавиши 1</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1022"/>
++        <location filename="../ui/pref_widget.ui" line="1080"/>
++        <source>Shortcut2</source>
++        <translation>Горячие клавиши 2</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1027"/>
++        <location filename="../ui/pref_widget.ui" line="1096"/>
++        <source>Shortcut3</source>
++        <translation>Горячие клавиши 3</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1032"/>
++        <location filename="../ui/pref_widget.ui" line="1112"/>
++        <source>Shortcut4</source>
++        <translation>Горячие клавиши 4</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1048"/>
++        <source>Change:</source>
++        <translation>Изменение:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1122"/>
++        <source>Mouse</source>
++        <translation>Мышь</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1132"/>
++        <source>Control Step</source>
++        <translation>Управление шагом</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1149"/>
++        <source>Seek Step 1:</source>
++        <translation>Шаг перемотки 1:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1172"/>
++        <source>Seek Step 2:</source>
++        <translation>Шаг перемотки 2:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1208"/>
++        <source>Brightness Step:</source>
++        <translation>Шаг яркости:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1215"/>
++        <location filename="../ui/pref_widget.ui" line="1235"/>
++        <location filename="../ui/pref_widget.ui" line="1268"/>
++        <location filename="../ui/pref_widget.ui" line="1294"/>
++        <location filename="../ui/pref_widget.ui" line="1327"/>
++        <location filename="../ui/pref_widget.ui" line="1377"/>
++        <location filename="../ui/pref_widget.ui" line="1390"/>
++        <location filename="../ui/pref_widget.ui" line="1410"/>
++        <source>%</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1228"/>
++        <source>Contrast Step:</source>
++        <translation>Шаг контраста:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1258"/>
++        <source>Volume Step:</source>
++        <translation>Шаг громкости:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1284"/>
++        <source>Amp. Step:</source>
++        <translation>Шаг Амп.:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1320"/>
++        <source>Speed Step:</source>
++        <translation>Шаг скорости:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1340"/>
++        <source>Seek Step 3:</source>
++        <translation>Шаг перемотки 3:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1363"/>
++        <source>Saturation Step:</source>
++        <translation>Шаг насыщенности:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1370"/>
++        <source>Hue Step:</source>
++        <translation>Шаг оттенка:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1403"/>
++        <source>Subtitle Position Step:</source>
++        <translation>Шаг положения субтитров:</translation>
++    </message>
++    <message>
++        <location filename="../ui/pref_widget.ui" line="1423"/>
++        <source>Subtitle Sync Delay Step:</source>
++        <translation>Шаг задержки синхронизации субтитров:</translation>
++    </message>
++</context>
++<context>
++    <name>QtSolution::ColorPickerPopup</name>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="788"/>
++        <source>Custom</source>
++        <translation>Пользовательский</translation>
++    </message>
++</context>
++<context>
++    <name>QtSolution::QtColorPicker</name>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="173"/>
++        <location filename="../qtcolorpicker.cpp" line="299"/>
++        <location filename="../qtcolorpicker.cpp" line="402"/>
++        <source>Black</source>
++        <translation>Чёрный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="300"/>
++        <location filename="../qtcolorpicker.cpp" line="403"/>
++        <source>White</source>
++        <translation>Белый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="301"/>
++        <location filename="../qtcolorpicker.cpp" line="404"/>
++        <source>Red</source>
++        <translation>Красный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="302"/>
++        <location filename="../qtcolorpicker.cpp" line="405"/>
++        <source>Dark red</source>
++        <translation>Тёмно красный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="303"/>
++        <location filename="../qtcolorpicker.cpp" line="406"/>
++        <source>Green</source>
++        <translation>Зелёный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="304"/>
++        <location filename="../qtcolorpicker.cpp" line="407"/>
++        <source>Dark green</source>
++        <translation>Тёмно зелёный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="305"/>
++        <location filename="../qtcolorpicker.cpp" line="408"/>
++        <source>Blue</source>
++        <translation>Синий</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="306"/>
++        <location filename="../qtcolorpicker.cpp" line="409"/>
++        <source>Dark blue</source>
++        <translation>Тёмно синий</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="307"/>
++        <location filename="../qtcolorpicker.cpp" line="410"/>
++        <source>Cyan</source>
++        <translation>Голубой</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="308"/>
++        <location filename="../qtcolorpicker.cpp" line="411"/>
++        <source>Dark cyan</source>
++        <translation>Тёмно голубой</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="309"/>
++        <location filename="../qtcolorpicker.cpp" line="412"/>
++        <source>Magenta</source>
++        <translation>Пурпурный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="310"/>
++        <location filename="../qtcolorpicker.cpp" line="413"/>
++        <source>Dark magenta</source>
++        <translation>Тёмно пурпурный</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="311"/>
++        <location filename="../qtcolorpicker.cpp" line="414"/>
++        <source>Yellow</source>
++        <translation>Жёлтый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="312"/>
++        <location filename="../qtcolorpicker.cpp" line="415"/>
++        <source>Dark yellow</source>
++        <translation>Тёмно жёлтый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="313"/>
++        <location filename="../qtcolorpicker.cpp" line="416"/>
++        <source>Gray</source>
++        <translation>Серый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="314"/>
++        <location filename="../qtcolorpicker.cpp" line="417"/>
++        <source>Dark gray</source>
++        <translation>Тёмно серый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="315"/>
++        <location filename="../qtcolorpicker.cpp" line="418"/>
++        <source>Light gray</source>
++        <translation>Светло серый</translation>
++    </message>
++    <message>
++        <location filename="../qtcolorpicker.cpp" line="333"/>
++        <source>Custom</source>
++        <translation>Пользовательский</translation>
++    </message>
++</context>
++<context>
++    <name>RootMenu</name>
++    <message>
++        <location filename="../rootmenu.cpp" line="311"/>
++        <location filename="../rootmenu.cpp" line="360"/>
++        <source>Open</source>
++        <translation>Открыть</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="312"/>
++        <source>Open File</source>
++        <translation>Открыть файл</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="313"/>
++        <source>Load URL</source>
++        <translation>Открыть адрес</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="314"/>
++        <source>Open DVD</source>
++        <translation>Открыть DVD</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="317"/>
++        <source>Recent Open</source>
++        <translation>Последний открытый</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="318"/>
++        <location filename="../rootmenu.cpp" line="361"/>
++        <source>Clear</source>
++        <translation>Очистить</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="321"/>
++        <location filename="../rootmenu.cpp" line="322"/>
++        <source>Play</source>
++        <translation>Воспроизведение</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="323"/>
++        <source>Stop</source>
++        <translation>Стоп</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="324"/>
++        <source>Play Previous</source>
++        <translation>Играть предыдущий</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="325"/>
++        <source>Play Next</source>
++        <translation>Играть следующий</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="328"/>
++        <source>Playback Speed</source>
++        <translation>Скорость воспроизведения</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="329"/>
++        <location filename="../rootmenu.cpp" line="409"/>
++        <location filename="../rootmenu.cpp" line="429"/>
++        <source>Reset</source>
++        <translation>Сброс</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="333"/>
++        <source>A-B Repeat</source>
++        <translation>Повторять A-B</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="334"/>
++        <source>Set Range to Current Time</source>
++        <translation>Установить диапозон сейчас</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="335"/>
++        <source>Repeat Current Subtitle</source>
++        <translation>Повторять текущие субтитры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="336"/>
++        <source>Quit</source>
++        <translation>Выход</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="339"/>
++        <source>Seek</source>
++        <translation>Перейти</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="340"/>
++        <source>Forward %1sec</source>
++        <translation>Вперёд %1сек</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="344"/>
++        <source>Backward %1sec</source>
++        <translation>Назад %1сек</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="349"/>
++        <source>To Previous Subtitle</source>
++        <translation>На предыдущие субтитры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="350"/>
++        <source>To Beginning of Current Subtitle</source>
++        <translation>На начало текущих субтитров</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="351"/>
++        <source>To Next Subtitle</source>
++        <translation>На следующие субтитры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="353"/>
++        <source>Title</source>
++        <translation>Заголовок</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="354"/>
++        <source>Chapter</source>
++        <translation>Глава</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="357"/>
++        <source>Subtitle</source>
++        <translation>Субтитры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="359"/>
++        <source>Subtitle File</source>
++        <translation>Файл субтитров</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="362"/>
++        <source>Hide</source>
++        <translation>Скрыть</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="363"/>
++        <source>Subtitle Track</source>
++        <translation>Дорожка субтитров</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="365"/>
++        <source>Display on Letterbox</source>
++        <translation>Отображать на letterbox</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="366"/>
++        <source>Display in Video</source>
++        <translation>Отображать на видео</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="367"/>
++        <source>Top Alignment</source>
++        <translation>Отображать верху</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="368"/>
++        <source>Bottom Alignment</source>
++        <translation>Отображать внизу</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="370"/>
++        <source>Up %1%</source>
++        <translation>Вверх %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="371"/>
++        <source>Down %1%</source>
++        <translation>Вниз %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="372"/>
++        <source>Reset Sync</source>
++        <translation>Сброс синхронизации</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="373"/>
++        <source>Sync %1sec</source>
++        <translation>Синхронизация %1сек</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="376"/>
++        <source>Video</source>
++        <translation>Видео</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="377"/>
++        <source>Video Track</source>
++        <translation>Видео дорожка</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="380"/>
++        <source>Aspect Ratio</source>
++        <translation>Соотношение сторон</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="381"/>
++        <location filename="../rootmenu.cpp" line="438"/>
++        <source>Auto</source>
++        <translation>Авто</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="382"/>
++        <location filename="../rootmenu.cpp" line="391"/>
++        <source>Same as Window</source>
++        <translation>В размер окна</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="383"/>
++        <location filename="../rootmenu.cpp" line="392"/>
++        <source>4:3 (TV)</source>
++        <translation></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="384"/>
++        <location filename="../rootmenu.cpp" line="393"/>
++        <source>16:9 (HDTV)</source>
++        <translation></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="385"/>
++        <location filename="../rootmenu.cpp" line="394"/>
++        <source>1.85:1 (Wide Vision)</source>
++        <translation></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="386"/>
++        <location filename="../rootmenu.cpp" line="395"/>
++        <source>2.35:1 (CinemaScope)</source>
++        <translation></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="389"/>
++        <source>Crop</source>
++        <translation>Обрезать</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="390"/>
++        <source>Off</source>
++        <translation>Выкл</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="398"/>
++        <source>Screen Alignment</source>
++        <translation>Выравнивание экрана</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="400"/>
++        <source>Top</source>
++        <translation>Вверх</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="401"/>
++        <source>Vertical Center</source>
++        <translation>Центр вертикали</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="402"/>
++        <source>Bottom</source>
++        <translation>Вниз</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="403"/>
++        <source>Left</source>
++        <translation>Влево</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="404"/>
++        <source>Horizontal Center</source>
++        <translation>Центр горизонтали</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="405"/>
++        <source>Right</source>
++        <translation>Вправо</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="408"/>
++        <source>Screen Position</source>
++        <translation>Положение экрана</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="410"/>
++        <source>Up</source>
++        <translation>Вверх</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="411"/>
++        <source>Down</source>
++        <translation>Вниз</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="412"/>
++        <source>To Left</source>
++        <translation>Левее</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="413"/>
++        <source>To Right</source>
++        <translation>Правее</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="416"/>
++        <source>Filter</source>
++        <translation>Фильтр</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="417"/>
++        <source>Flip Vertically</source>
++        <translation>Отразить по вертикали</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="418"/>
++        <source>Flip Horizontally</source>
++        <translation>Отразить по горизонтали</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="419"/>
++        <source>Blur</source>
++        <translation>Размытие</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="420"/>
++        <source>Sharpen</source>
++        <translation>Резкость</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="421"/>
++        <source>Grayscale</source>
++        <translation>Оттенки серого</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="422"/>
++        <source>Invert Color</source>
++        <translation>Обратить цвета</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="423"/>
++        <source>Adjust Constrast</source>
++        <translation>Контрастность</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="424"/>
++        <source>Auto Contrast</source>
++        <translation>Автоконтраст</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="425"/>
++        <source>Ignore All Filters</source>
++        <translation>Игнорировать все фильтры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="428"/>
++        <source>Color</source>
++        <translation>Цветность</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="430"/>
++        <source>Brightness %1%</source>
++        <translation>Яркость %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="431"/>
++        <source>Saturation %1%</source>
++        <translation>Насыщенность %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="432"/>
++        <source>Contrast %1%</source>
++        <translation>Контраст %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="433"/>
++        <source>Hue %1%</source>
++        <translation>Оттенок %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="434"/>
++        <source>Take Snapshot</source>
++        <translation>Захват снимка</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="437"/>
++        <source>Overlay</source>
++        <translation>Наложение</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="439"/>
++        <source>Framebuffer Object</source>
++        <translation>Фреймбуфер</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="440"/>
++        <source>Pixmap</source>
++        <translation type="unfinished"></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="443"/>
++        <source>Audio</source>
++        <translation>Аудио</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="444"/>
++        <source>Audio Track</source>
++        <translation>Аудио дорожка</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="445"/>
++        <source>Mute</source>
++        <translation>Без звука</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="446"/>
++        <source>Normalize Volume</source>
++        <translation>Нормализовать громкость</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="448"/>
++        <source>Volume %1%</source>
++        <translation>Громкость %1%</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="450"/>
++        <source>Amp %1%</source>
++        <translation></translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="453"/>
++        <source>Tools</source>
++        <translation>Инструменты</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="454"/>
++        <source>Playlist</source>
++        <translation>Плейлист</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="455"/>
++        <source>Favorites</source>
++        <translation>Избранное</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="456"/>
++        <source>Play History</source>
++        <translation>Воспроизвести историю</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="457"/>
++        <source>Subtitle View</source>
++        <translation>Показать субтитры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="458"/>
++        <source>Preferences</source>
++        <translation>Параметры</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="459"/>
++        <source>Play Information</source>
++        <translation>Данные о воспроизведении</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="462"/>
++        <source>Window</source>
++        <translation>Окно</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="463"/>
++        <source>Always Stay on Top</source>
++        <translation>Всегда оставаться сверху</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="464"/>
++        <source>Stay on Top Playing</source>
++        <translation>Сверху при воспроизведении</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="465"/>
++        <source>Don&apos;t Stay on Top</source>
++        <translation>Не оставаться сверху</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="466"/>
++        <source>Proper Size</source>
++        <translation>Реальный размер</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="467"/>
++        <source>Fullscreen</source>
++        <translation>Во весь экран</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="468"/>
++        <source>Minimize</source>
++        <translation>Свернуть</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="469"/>
++        <source>Maximize</source>
++        <translation>Распахнуть</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="470"/>
++        <source>Close</source>
++        <translation>Закрыть</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="473"/>
++        <source>Help</source>
++        <translation>Справка</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="474"/>
++        <source>About %1</source>
++        <translation>Об %1</translation>
++    </message>
++    <message>
++        <location filename="../rootmenu.cpp" line="475"/>
++        <source>Exit</source>
++        <translation>Выход</translation>
++    </message>
++</context>
++<context>
++    <name>SimpleListWidget</name>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="19"/>
++        <location filename="../simplelistwidget.cpp" line="80"/>
++        <source>Add</source>
++        <translation>Добавить</translation>
++    </message>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="20"/>
++        <source>Erase</source>
++        <translation>Стереть</translation>
++    </message>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="21"/>
++        <source>Move Up</source>
++        <translation>Вверх</translation>
++    </message>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="22"/>
++        <source>Move Down</source>
++        <translation>Вниз</translation>
++    </message>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="82"/>
++        <source>&amp;Ok</source>
++        <translation>&amp;Да</translation>
++    </message>
++    <message>
++        <location filename="../simplelistwidget.cpp" line="83"/>
++        <source>&amp;Cancel</source>
++        <translation>&amp;Отмена</translation>
++    </message>
++</context>
++<context>
++    <name>SnapshotDialog</name>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="14"/>
++        <source>Take Snapshot</source>
++        <translation>Захват снимка</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="32"/>
++        <source>Take</source>
++        <translation>Захват</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="42"/>
++        <source>Zoom Out</source>
++        <translation>Уменьшить</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="45"/>
++        <location filename="../ui/snapshotdialog.ui" line="56"/>
++        <source>Zoom In</source>
++        <translation>Увеличить</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="67"/>
++        <source>View Original Size</source>
++        <translation>Оригинальный размер</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="70"/>
++        <source>Zoom Original</source>
++        <translation>Увеличить оригинал</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="81"/>
++        <source>Include subtitle</source>
++        <translation>Включить субтитры</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="107"/>
++        <source>Save</source>
++        <translation>Сохранить</translation>
++    </message>
++    <message>
++        <location filename="../ui/snapshotdialog.ui" line="114"/>
++        <source>Close</source>
++        <translation>Закрыть</translation>
++    </message>
++    <message>
++        <location filename="../snapshotdialog.cpp" line="52"/>
++        <source>Images</source>
++        <translation>Изображение</translation>
++    </message>
++    <message>
++        <location filename="../snapshotdialog.cpp" line="57"/>
++        <source>Save File</source>
++        <translation>Сохранить файл</translation>
++    </message>
++    <message>
++        <location filename="../snapshotdialog.cpp" line="79"/>
++        <source>Failed in getting a snapshot!</source>
++        <translation>Ошибка при создании снимка!</translation>
++    </message>
++</context>
++<context>
++    <name>SubtitleAutoload</name>
++    <message>
++        <location filename="../enums.hpp" line="290"/>
++        <source>Subtitles which have the same name as that of playing file</source>
++        <translation>Субтитры с тем же именем, что и у проигрываемого файла</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="292"/>
++        <source>Subtitles whose names contain the name of playing file</source>
++        <translation>Субтитры, имена которых содержат имя проигрываемого файла</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="294"/>
++        <source>All subtitles in the folder where the playing file is located</source>
++        <translation>Все субтитры в папке, в которой находится воспроизводимый файл</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="296"/>
++        <source>Do not load any other subtitles</source>
++        <translation>Не загружайте  никакие другие субтитры</translation>
++    </message>
++</context>
++<context>
++    <name>SubtitleAutoselect</name>
++    <message>
++        <location filename="../enums.hpp" line="355"/>
++        <source>Subtitle which has the same name as that of playing file</source>
++        <translation>Субтитры с тем же именем, что и у проигрываемого файла</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="357"/>
++        <source>First subtitle from loaded ones</source>
++        <translation>Первый файл субтитров из  загруженных</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="359"/>
++        <source>All loaded subtitles</source>
++        <translation>Все загруженные субтитры</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="361"/>
++        <source>Each language subtitle</source>
++        <translation>Нужный язык субтитров</translation>
++    </message>
++</context>
++<context>
++    <name>SubtitleComponentModel</name>
++    <message>
++        <location filename="../subtitlemodel.cpp" line="83"/>
++        <source>Start</source>
++        <translation>Старт</translation>
++    </message>
++    <message>
++        <location filename="../subtitlemodel.cpp" line="84"/>
++        <source>End</source>
++        <translation>Конец</translation>
++    </message>
++    <message>
++        <location filename="../subtitlemodel.cpp" line="85"/>
++        <source>Text</source>
++        <translation>Текст</translation>
++    </message>
++</context>
++<context>
++    <name>SubtitleView</name>
++    <message>
++        <location filename="../subtitleview.cpp" line="47"/>
++        <source>Show start/end time</source>
++        <translation>Время старта/окончания</translation>
++    </message>
++    <message>
++        <location filename="../subtitleview.cpp" line="48"/>
++        <source>Scroll to current time</source>
++        <translation>Показывать текущие</translation>
++    </message>
++    <message>
++        <location filename="../subtitleview.cpp" line="66"/>
++        <source>Subtitle View</source>
++        <translation>Показать субтитры</translation>
++    </message>
++</context>
++<context>
++    <name>WheelAction</name>
++    <message>
++        <location filename="../enums.hpp" line="549"/>
++        <source>Seek playback for step 1</source>
++        <translation>Переход воспроизведения для шага 1</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="551"/>
++        <source>Seek playback for step 2</source>
++        <translation>Переход воспроизведения для шага 2</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="553"/>
++        <source>Seek playback for step 3</source>
++        <translation>Переход воспроизведения для шага 3</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="555"/>
++        <source>Play previous/next</source>
++        <translation>Играть предыдущий/следующий</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="557"/>
++        <source>Volumn up/down</source>
++        <translation>Громкость больше/меньше</translation>
++    </message>
++    <message>
++        <location filename="../enums.hpp" line="559"/>
++        <source>Amp. up/down</source>
++        <translation>Амп. больше/меньше</translation>
++    </message>
++</context>
++</TS>
+
