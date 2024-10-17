@@ -11,7 +11,7 @@ Version:	0.5.4
 Release:	5
 Group:		Video
 License:	GPLv2
-URL:		http://code.google.com/p/cmplayer
+URL:		https://code.google.com/p/cmplayer
 Source0:	http://cmplayer.googlecode.com/files/%{name}-%{version}-src.tar.gz
 Patch0:		cmplayer-0.5.4-ru.patch
 
